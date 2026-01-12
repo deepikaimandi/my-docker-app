@@ -24,12 +24,11 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Tag Docker image
-        run: | 
-        docker tag my-web-app ${{ secrets.DOCKER_USERNAME }}/my-web-app:latest
-        docker tag my-web-app ${{ secrets.DOCKER_USERNAME }}/my-web-app:${{ github.sha }}
-
+        run: |
+          docker tag my-web-app ${{ secrets.DOCKER_USERNAME }}/my-web-app:latest
+          docker tag my-web-app ${{ secrets.DOCKER_USERNAME }}/my-web-app:${{ github.sha }}
 
       - name: Push Docker image
         run: |
-        docker push ${{ secrets.DOCKER_USERNAME }}/my-web-app:latest
-        docker push ${{ secrets.DOCKER_USERNAME }}/my-web-app:${{ github.sha }}
+          docker push ${{ secrets.DOCKER_USERNAME }}/my-web-app:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/my-web-app:${{ github.sha }}
